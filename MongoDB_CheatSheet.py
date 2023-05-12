@@ -35,6 +35,34 @@ db.users.find({ name: { $eq: "Sally"}}) #returns query where name Equals "Sally"
 db.users.find({ name: { $ne: "Sally"}}) #returns query where name does NOT EQUAL "Sally"
 db.users.find({ age: { $gt: 13}}) #returns query where age > 13
 db.users.find({ age: { $gte: 46}})  #returns query where age is >= 46
+db.users.find({ age: { $lte: 46}})  #returns query where age is <= 46
+db.users.find({ name: { $in: ["Billi", "Tommy"]}})  #returns query where name is IN "Billi" or "Tommy"                   
+db.users.find({ name: { $nin: ["Billi", "Tommy"]}})  #returns query where name is NOT IN "Billi" or "Tommy"
+db.users.find({ age: { $exists: true }})  #returns objects that have an age in their field (will return NULL values)
+db.users.find({ age: { $exists: false }})  #returns objects that dont have an age in their field (will return NULL values)
 
+#Combining Multiple Complex Queries
+db.users.find({ age: { $gte: 20, $lte: 50 }}) #returns query where age is >= 20 AND age is <= 50
+db.users.find({ age: { $gte: 20, $lte: 50 }, name: "Tommy"})  #returns query where age is >= 20 AND age <= 50 AND name is "Tommy"
+db.users.find({ $and: [{age: 54}, {name: "Billi"}] }) #returns query where age is 54 AND name is "Billi"
+db.users.find({ $or: [{age: {$lte: 20}}, {name: "Billi"}] })  #returns query where age <= 20 OR name is "Billi"
+db.users.find({ age: { $not: { $lte: 20}}}) #returns query where age is NOT <= 20 (will return NULL values)
+db.users.find({$expr: {$gt: ["$debt", "$balance"]}})  #returns object where debt > balance
+
+#Additional Find Methods
+db.users.find({ "address.street": "321 North St"})  #finds object with "321 North St"
+db.users.findOne({ age: {$lte: 40}})  #find first user with age <= 40
+db.users.countDocuments({ age: {$lte: 40}}) #returns count of objects with age <= 40
+
+#Updatind Data
+db.users.updateOne({age: 54}, { $set: {age: 60}}) #update first user age from 54 to 60
+db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$rename: {name: "firstname"}}) #rename first Object Id from "name" to "firstname"
+db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$unset: {age: ""}})  #unset completeley removes "age" property from first Obect Id
+db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$push: {hobbies: "swimming"}}) #push adds to field (in this case adds "swimming" to hobbies array)
+db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$push: {hobbies: "swimming"}}) #pull removes from field (in this case removes "swimming" from hobbies array)
+db.users.updateMany({address: {$exists: true}}, {$unset: {address: ""}})  #updates many fields where address exist, and removes address property
+
+#Deleting
+db.users.deleteOne({})  #deeltes first one
+db.users.deleteMany({}) #deletes many
                    
-
