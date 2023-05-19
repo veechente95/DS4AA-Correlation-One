@@ -46,3 +46,75 @@ Order By City Desc;
 SELECT * FROM Customers
 ORDER BY Country, City;
 
+#----------- SQL Insert -------------
+# Insert a new record in the Customers table.
+INSERT INTO Customers (
+CustomerName,
+Address, 
+City,
+PostalCode,
+Country)
+VALUES (
+'Hekkan Burger',
+'Gateveien 15',
+'Sandnes',
+'4306',
+'Norway'
+);
+
+
+#----------- SQL Null -------------
+# Select all records from the Customers where the PostalCode column is empty.
+SELECT * FROM Customers
+WHERE PostalCode IS NULL;
+
+# Select all records from the Customers where the PostalCode column is NOT empty.
+SELECT * FROM Customers
+WHERE PostalCode IS NOT NULL;
+
+#----------- SQL Update -------------
+# Update the City column of all records in the Customers table.
+UPDATE Customers
+SET City = 'Oslo';
+
+# Set the value of the City columns to 'Oslo', but only the ones where the Country column has the value "Norway".
+UPDATE Customers
+SET City = 'Oslo'
+WHERE Country = 'Norway';
+
+# Update the City value and the County value.
+UPDATE Customers
+SET City = 'Oslo',
+COUNTRY = 'Norway'
+WHERE CustomerID = 32;
+
+#----------- SQL Delete -------------
+# Delete all the records from the Customers table where the Country value is 'Norway'.
+DELETE FROM Customers
+WHERE Country = 'Norway';
+
+# Delete all the records from the Customers table.
+DELETE FROM Customers;
+
+#----------- SQL Functions -------------
+# Use the MIN function to select the record with the smallest value of the Price column.
+SELECT MIN(Price)
+FROM Products;
+
+# Use an SQL function to select the record with the highest value of the Price column.
+SLECT MAX(Price)
+FROM Products;
+
+# Use the correct function to return the number of records that have the Price value set to 18.
+SELECT COUNT(*)
+FROM Products
+WHERE Price = 18;
+
+# Use an SQL function to calculate the average price of all products.
+SELECT AVG(Price)
+FROM Products;
+
+
+
+
+
