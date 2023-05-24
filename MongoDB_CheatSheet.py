@@ -5,7 +5,7 @@ mongosh           #opens shell
 show dbs          #shows databse
 use appdb         #select database you watn to use (can change appdb to whatever)
 show collections  #view collections
-db.dropDatabse()  #delet database
+db.dropDatabse()  #delete database
 cls               #clears screen (stays on active work)
 exit              #exits you out of terminal
 
