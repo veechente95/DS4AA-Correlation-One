@@ -54,7 +54,7 @@ db.users.find({ "address.street": "321 North St"})  #finds object with "321 Nort
 db.users.findOne({ age: {$lte: 40}})  #find first user with age <= 40
 db.users.countDocuments({ age: {$lte: 40}}) #returns count of objects with age <= 40
 
-#Updatind Data
+#Updating Data
 db.users.updateOne({age: 54}, { $set: {age: 60}}) #update first user age from 54 to 60
 db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$rename: {name: "firstname"}}) #rename first Object Id from "name" to "firstname"
 db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$unset: {age: ""}})  #unset completeley removes "age" property from first Obect Id
@@ -63,6 +63,6 @@ db.users.updateOne({_id: ObjectId("645c0be9aece6fe4a20442bb")}, {$push: {hobbies
 db.users.updateMany({address: {$exists: true}}, {$unset: {address: ""}})  #updates many fields where address exist, and removes address property
 
 #Deleting
-db.users.deleteOne({})  #deeltes first one
+db.users.deleteOne({})  #delets first one
 db.users.deleteMany({}) #deletes many
                    
