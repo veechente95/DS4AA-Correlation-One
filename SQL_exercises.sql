@@ -195,13 +195,39 @@ ON Orders.CustomerID=Customers.CustomerID;
 
 #--------------------- SQL Group By -------------------------
 #List the number of customers in each country.
+SELECT COUNT (CustomerID),
+Country
+FROM Customers
+GROUP BY Country;
+
+#List the number of customers in each country, ordered by the country with the most customers first.
+SELECT COUNT (CustomerID),
+Country
+FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID) DESC;
 
 
+#--------------------- SQL Database -------------------------
+CREATE DATABASE testDB;   #Write the correct SQL statement to create a new database called testDB.
+DROP DATABASE testDB;     #Write the correct SQL statement to delete a database named testDB.
+DROP TABLE Persons;       #Write the correct SQL statement to delete a table called Persons.
+TRUNCATE TABLE Persons;   #Use the TRUNCATE statement to delete all data inside a table.
+
+#Add a column of type DATE called Birthday.
+ALTER TABLE Persons
+ADD BIRTHDAY DATE;
+
+#Delete the column Birthday from the Persons table.
+ALTER TABLE Persons
+DROP COLUMN Birthday;
 
 
-
-
-
-
-
-
+Write the correct SQL statement to create a new table called Persons.
+CREATE TABLE Persons (
+  PersonID int,
+  LastName varchar(255),
+  FirstName varchar(255),
+  Address varchar(255),
+  City varchar(255) 
+);
