@@ -194,6 +194,8 @@ ON Orders.CustomerID=Customers.CustomerID;
 
 
 #--------------------- SQL Group By -------------------------
+#List the number of customers in each country.
+
 
 
 
