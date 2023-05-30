@@ -21,4 +21,14 @@ df["column"].drop_duplicates().to_list()  #shows all categories w/o/ duplicates 
 df["column"].min() #gets min value
 df["column"].max() #gets max value
 df["column"].str.lower()  #makes all str lowercase
-df["column"].drop_duplicates().str.count("-").head(10)  #counts num of "-", without duplicates, limit to 10 rows
+df["column"].drop_duplicates()
+df["column"].str.count("-").head(10)  #counts num of "-", limit to 10 rows
+df["column"].apply()  #you can send custom functions, pandas will send values from each cell into func. Instead of using for loop, it automatically loops it for us
+df["column"].value_counts() #counts values of series (high to low)
+df["column"].reset_index()  #reset levels of index back into columns 
+df["column"].fillna()  #replace NaN (pandas version of n/a) with any value like “0”
+
+str.contains() #Pass string you want to search and returns True for the cells that contain that string and False for the ones that dont
+isin()    #check if something is in another dict, list, tuple, etc
+
+
