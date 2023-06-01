@@ -34,6 +34,22 @@ from cd .facilities;
 --Working with dates
 --How can you produce a list of members who joined after the start of September 2012? 
 --Return the memid, surname, firstname, and joindate of the members in question.
+select memid, surname, firstname, joindate 
+from cd.members
+where joindate >= '2012-09-01';
+
+--Removing duplicates, and ordering results
+--How can you produce an ordered list of the first 10 surnames in the members table? The list must not contain duplicates.
+select distinct surname from cd.members
+order by surname asc
+limit 10;
+
+--Combining results from multiple queries
+--You, for some reason, want a combined list of all surnames and all facility names.
+select surname from cd.members
+union
+select name from cd.facilities;
+
 
 
 
