@@ -12,7 +12,7 @@ exit              #exits you out of terminal
 
 --Adding Data To Databse
 use appdb
-db.users.insertOne({ name: "John"}  #insert one record
+db.users.insertOne({ name: "John"})  #insert one record
 db.users.insertOne({ name: "Sally", age: 16, address: {street: "987 North St"}, hobbies: ["running"] }) #can nest which is hard in SQL
 db.users.insertMany([{ name: "Billi", age: 54, hobbies: ["cooking", "weight lifting"], address: { street: "321 North St"}}, 
                      { name: "Tommy", age: 46, hobbies: ["reading", "gaming"], address: { street: "456 North St"}}])  #inserts many records
